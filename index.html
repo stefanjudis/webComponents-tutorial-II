@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>WebComponents tutorial</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- @start Polymer stuff -->
+        <script src="js/vendor/polymer.min.js"></script>
+
+        <link rel="import" href="components/sj-checkbox.html">
+        <link rel="import" href="components/sj-checkbox-input.html">
+        <!-- @end Polymer stuff -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <style>
+          #switchesComponentsStyled sj-checkbox::x-sj-switch,
+          #switchesComponentsStyled sj-checkbox [pseudo=x-sj-switch] {
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+          }
+
+          #switchesComponentsStyled sj-checkbox::x-sj-circle:after,
+          #switchesComponentsStyled sj-checkbox [pseudo=x-sj-circle]:after {
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+          }
+
+          #switchesComponentsStyled sj-checkbox::x-sj-inner-circles:before,
+          #switchesComponentsStyled sj-checkbox [pseudo=x-sj-inner-circles]:before {
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+            background-color: #cf8bad;
+          }
+
+          #switchesComponentsStyled sj-checkbox::x-sj-inner-circles:after,
+          #switchesComponentsStyled sj-checkbox [pseudo=x-sj-inner-circles]:after {
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+            background-color: #33a675;
+          }
+
+          #switchesComponentsStyled sj-checkbox::x-sj-label,
+          #switchesComponentsStyled sj-checkbox [pseudo=x-sj-label] {
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+          }
+        </style>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <h1>Checkbox Power<br>With Web Components</h1>
+        <p>Go back to article<br><a href="http://4waisenkinder.de/blog/2013/09/21/getting-started-with-web-components-and-polymer-dot-js/">"Getting started with web components using polymer.js"</a></p>
+        <h2>Check the "web components" checkboxes</h2>
+        <ul id="switchesComponents">
+            <li><sj-checkbox size="big" fallbackId="checkboxBigComponent"></sj-checkbox>
+            <li><sj-checkbox size="medium" fallbackId="checkboxMediumComponent"></sj-checkbox>
+            <li><sj-checkbox size="small" fallbackId="checkboxSmallComponent"></sj-checkbox>
+        </ul>
+        <div id="switchesComponentsNotifications" class="notification"></div>
+        <script>
+          ( function( document ) {
+            var switchList    = document.getElementById( 'switchesComponents' );
+
+            switchList.addEventListener( 'componentChange', changeHandler, false );
+
+            function changeHandler( event ) {
+              var notification = document.getElementById( 'switchesComponentsNotifications' );
+
+              notification.innerHTML = '!!! ' + event.detail.id +' switched !!!';
+            }
+          } )( document );
+        </script>
+        <h2>Customized Web components</h2>
+        <ul id="switchesComponentsStyled">
+            <li><sj-checkbox size="big" fallbackId="checkboxBigStyled"></sj-checkbox>
+            <li><sj-checkbox size="medium" fallbackId="checkboxMediumStyled"></sj-checkbox>
+            <li><sj-checkbox size="small" fallbackId="checkboxSmallStyled"></sj-checkbox>
+        </ul>
+        <div id="switchesComponentsStyledNotifications" class="notification"></div>
+        <script>
+          ( function( document ) {
+            var switchList    = document.getElementById( 'switchesComponentsStyled' );
+
+            switchList.addEventListener( 'componentChange', changeHandler, false );
+
+            function changeHandler( event ) {
+              var notification = document.getElementById(
+                                    'switchesComponentsStyledNotifications'
+                                  );
+
+              notification.innerHTML = '!!! ' + event.detail.id +' switched !!!';
+            }
+          } )( document );
+        </script>
+        <h2>Web component with behaviour</h2>
+        <div class="container">
+            <sj-checkbox-input size="small" fallbackId="checkboxBigStyled">Wanna set a name?</sj-checkbox-input>
+        </div>
+    </body>
+</html>

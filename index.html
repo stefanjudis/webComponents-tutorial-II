@@ -21,11 +21,15 @@
         <link rel="stylesheet" href="css/main.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
         <style>
-          #switchesComponentsStyled sj-checkbox::x-sj-switch,
-          #switchesComponentsStyled sj-checkbox [pseudo=x-sj-switch] {
-            -webkit-box-shadow: none;
-            -moz-box-shadow: none;
-            box-shadow: none;
+          #switchesComponentsStyled sj-checkbox {
+            -webkit-box-shadow: none !important;
+            -moz-box-shadow: none !important;
+            box-shadow: none !important;
+          }
+
+          #switchesComponentsStyled .customWidth {
+            min-width: 80px;
+            min-height: 80px;
           }
 
           #switchesComponentsStyled sj-checkbox::x-sj-circle:after,
@@ -57,6 +61,10 @@
             -moz-box-shadow: none;
             box-shadow: none;
           }
+
+          sj-checkbox-input {
+            margin: 0 auto 5em auto;
+          }
         </style>
     </head>
     <body>
@@ -68,9 +76,9 @@
         <p>Go back to article<br><a href="http://4waisenkinder.de/blog/2013/09/21/getting-started-with-web-components-and-polymer-dot-js/">"Getting started with web components using polymer.js"</a></p>
         <h2>Check the "web components" checkboxes</h2>
         <ul id="switchesComponents">
-            <li><sj-checkbox size="big" fallbackId="checkboxBigComponent"></sj-checkbox>
-            <li><sj-checkbox size="medium" fallbackId="checkboxMediumComponent"></sj-checkbox>
-            <li><sj-checkbox size="small" fallbackId="checkboxSmallComponent"></sj-checkbox>
+            <li><sj-checkbox class="small" fallbackId="checkboxBigComponent">jojojo</sj-checkbox>
+            <li><sj-checkbox class="medium" fallbackId="checkboxMediumComponent"></sj-checkbox>
+            <li><sj-checkbox class="big" fallbackId="checkboxSmallComponent"></sj-checkbox>
         </ul>
         <div id="switchesComponentsNotifications" class="notification"></div>
         <script>
@@ -88,9 +96,10 @@
         </script>
         <h2>Customized Web components</h2>
         <ul id="switchesComponentsStyled">
-            <li><sj-checkbox size="big" fallbackId="checkboxBigStyled"></sj-checkbox>
-            <li><sj-checkbox size="medium" fallbackId="checkboxMediumStyled"></sj-checkbox>
-            <li><sj-checkbox size="small" fallbackId="checkboxSmallStyled"></sj-checkbox>
+            <li><sj-checkbox class="big" fallbackId="checkboxBigStyled" style="color:red;"></sj-checkbox>
+            <li><sj-checkbox class="medium" fallbackId="checkboxMediumStyled"></sj-checkbox>
+            <li><sj-checkbox class="small" fallbackId="checkboxSmallStyled"></sj-checkbox>
+            <li><sj-checkbox class="customWidth" fallbackId="checkboxCustomStyled"></sj-checkbox>
         </ul>
         <div id="switchesComponentsStyledNotifications" class="notification"></div>
         <script>
@@ -109,8 +118,8 @@
           } )( document );
         </script>
         <h2>Web component with behaviour</h2>
-        <div class="container">
-            <sj-checkbox-input size="small" fallbackId="checkboxBigStyled">Wanna set a name?</sj-checkbox-input>
+        <div class="switchesComponentsWithBehaviour">
+            <sj-checkbox-input class="small" fallbackId="checkboxBehaviour">Something wrong?</sj-checkbox-input>
         </div>
     </body>
 </html>

@@ -38,14 +38,24 @@
           /**
            * Styling with pseudo ID's
            */
-          #switchesComponentsStyled sj-checkbox::x-sj-circle:after,
+          #switchesComponentsStyled sj-checkbox::x-sj-circle:after {
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+          }
           #switchesComponentsStyled sj-checkbox [pseudo=x-sj-circle]:after {
             -webkit-box-shadow: none;
             -moz-box-shadow: none;
             box-shadow: none;
           }
 
-          #switchesComponentsStyled sj-checkbox::x-sj-inner-circles:before,
+          #switchesComponentsStyled sj-checkbox::x-sj-inner-circles:before {
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+            background-color: #cf8bad;
+          }
+
           #switchesComponentsStyled sj-checkbox [pseudo=x-sj-inner-circles]:before {
             -webkit-box-shadow: none;
             -moz-box-shadow: none;
@@ -53,7 +63,13 @@
             background-color: #cf8bad;
           }
 
-          #switchesComponentsStyled sj-checkbox::x-sj-inner-circles:after,
+          #switchesComponentsStyled sj-checkbox::x-sj-inner-circles:after {
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+            background-color: #33a675;
+          }
+
           #switchesComponentsStyled sj-checkbox [pseudo=x-sj-inner-circles]:after {
             -webkit-box-shadow: none;
             -moz-box-shadow: none;
@@ -61,7 +77,12 @@
             background-color: #33a675;
           }
 
-          #switchesComponentsStyled sj-checkbox::x-sj-label,
+          #switchesComponentsStyled sj-checkbox::x-sj-label {
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+          }
+
           #switchesComponentsStyled sj-checkbox [pseudo=x-sj-label] {
             -webkit-box-shadow: none;
             -moz-box-shadow: none;
@@ -71,12 +92,18 @@
           /**
            * Styling with part pseudo elements
            */
-          #switchesComponentsStyledPart sj-checkbox-part::part(shadow),
-          #switchesComponentsStyledPart sj-checkbox-part [part=shadow],
-          #switchesComponentsStyledPart sj-checkbox-part::part(shadow):before,
-          #switchesComponentsStyledPart sj-checkbox-part [part=shadow]:before,
-          #switchesComponentsStyledPart sj-checkbox-part::part(shadow):after,
-          #switchesComponentsStyledPart sj-checkbox-part [part=shadow]:after {
+
+          sj-checkbox-part [part=shadow],
+          sj-checkbox-part [part=shadow]:before,
+          sj-checkbox-part [part=shadow]:after {
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+          }
+
+          sj-checkbox-part::part(shadow),
+          sj-checkbox-part::part(shadow):before,
+          sj-checkbox-part::part(shadow):after {
             -webkit-box-shadow: none;
             -moz-box-shadow: none;
             box-shadow: none;

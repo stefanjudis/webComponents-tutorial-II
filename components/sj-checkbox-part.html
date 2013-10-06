@@ -1,4 +1,4 @@
-<polymer-element name="sj-checkbox-input" attributes="size fallbackId">
+<polymer-element name="sj-checkbox-part" attributes="size fallbackId">
   <template>
     <style>
       @host {
@@ -7,7 +7,7 @@
           display: block;
           background-color: #baf0d8;
           border-radius: 20%;
-          /*overflow-x: hidden;*/
+          overflow-x: hidden;
           -webkit-box-shadow: 0 0.333em 0.75em #393939;
           -moz-box-shadow: 0 0.333em 0.75em #393939;
           box-shadow: 0 0.333em 0.75em #393939;
@@ -20,6 +20,18 @@
           left: 0;
           width: 100%;
           height: 20%;
+        }
+        :scope:before {
+          top: 0;
+          -webkit-box-shadow: inset 0 5px 10px #e4f9f0;
+          -moz-box-shadow: inset 0 5px 10px #e4f9f0;
+          box-shadow: inset 0 5px 10px #e4f9f0;
+        }
+        :scope:after {
+          bottom: 0;
+          -webkit-box-shadow: inset 0 -3px 5px #99eecc;
+          -moz-box-shadow: inset 0 -3px 5px #99eecc;
+          box-shadow: inset 0 -3px 5px #99eecc;
         }
         :scope.small {
           width: 50px;
@@ -36,20 +48,6 @@
           height: 150px;
           font-size: 2em;
         }
-      }
-
-      * {
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-      }
-
-      .hidden {
-        height: 0;
-
-        -webkit-transition: height 0.5s ease-in;
-        -moz-transition: height 0.5s ease-in;
-        -o-transition: height 0.5s ease-in;
-        transition: height 0.5s ease-in;
       }
 
       .switch__circle {
@@ -177,82 +175,16 @@
         background-image: linear-gradient(#e0e0e0, #ececec);
       }
 
-      .switch__content, .switch__textInput {
-        position: absolute;
-        width: 200%;
-        left: 100%;
-
-        font-size: 2em;
-
-        -webkit-transition: height 0.5s ease-in;
-        -moz-transition: height 0.5s ease-in;
-        -o-transition: height 0.5s ease-in;
-        transition: height 0.5s ease-in;
-      }
-
-      .switch__content {
-        top: 10%;
-
-        color: #fff;
-        cursor: pointer;
-      }
-
-      .switch__textInput {
-        position: relative;
-
-        height: 50%;
-        top: 25%;
-
-        margin-left: 0.5em;
-      }
-
-      .switch__textInput:before {
-        position:absolute;
-
-        content: '';
-
-        width: 0;
-        height: 0;
-
-        top: 33.333%;
-        right: 100%;
-
-        border: solid 0 transparent;
-        border-top: solid 5px transparent;
-        border-right: solid 5px #fff;
-        border-bottom: solid 5px transparent;
-      }
-
-      .switch__textInput__text {
-        width: 100%;
-
-        border: 0;
-        outline: 0;
-
-        padding: 0.25em;
-      }
-
-      .switch__textInput__text::-webkit-input-placeholder {
-        color: #57e3ab
-      }
-
-
     </style>
-    <div class="switch__circle" pseudo="x-sj-circle">
-        <input id="{{fallbackId}}" class="switch__input" type="checkbox" on-change="changeHandler"checked="checked">
-        <div class="switch__innerCircles" pseudo="x-sj-inner-circles"></div>
-        <label class="switch__label" for="{{fallbackId}}" pseudo="x-sj-label">Switch me!!!</label>
-      </div>
-      <label for="{{fallbackId}}" class="switch__content"><content></content></label>
-      <div class="switch__textInput hidden">
-        <input class="switch__textInput__text" type="text" placeholder="What is it?">
-      </div>div>
+    <div class="switch__circle" part="shadow">
+      <input id="{{fallbackId}}" class="switch__input" type="checkbox" on-change="changeHandler"checked="checked">
+      <div class="switch__innerCircles" part="shadow"></div>
+      <label class="switch__label" for="{{fallbackId}}" part="shadow" abc="def">Switch me!!!</label>
     </div>
   </template>
   <script>
-    Polymer( 'sj-checkbox-input', {
+    Polymer( 'sj-checkbox-part', {
       applyAuthorStyles     : true,
-      elements              : {},
       fallbackId            : 'switcher',
       changeHandler         : function( event ) {
         this.fire(
@@ -261,22 +193,6 @@
             id: event.target.id
           }
         );
-
-        if ( this.elements.textInput === undefined ) {
-          this.elements.textInput = this.shadowRoot.getElementsByClassName(
-                                      'switch__textInput'
-                                    )[ 0 ];
-        }
-
-        this.elements.textInput.classList.toggle( 'hidden' );
-
-        if ( this.elements.textContent === undefined ) {
-          this.elements.textContent = this.shadowRoot.getElementsByClassName(
-                                'switch__content'
-                              )[ 0 ];
-        }
-
-        this.elements.textContent.classList.toggle( 'hidden' );
       }
     } );
   </script>

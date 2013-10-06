@@ -14,14 +14,17 @@
         <script src="js/vendor/polymer.min.js"></script>
 
         <link rel="import" href="components/sj-checkbox.html">
-        <link rel="import" href="components/sj-checkbox-input.html">
+        <link rel="import" href="components/sj-checkbox-part.html">
+
+        <!-- next article but want to keep it ;) -->
+        <!--link rel="import" href="components/sj-checkbox-input.html"-->
         <!-- @end Polymer stuff -->
 
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
         <style>
-          #switchesComponentsStyled sj-checkbox {
+          #switchesComponentsStyled sj-checkbox, #switchesComponentsStyledPart sj-checkbox-part {
             -webkit-box-shadow: none !important;
             -moz-box-shadow: none !important;
             box-shadow: none !important;
@@ -32,6 +35,9 @@
             min-height: 80px;
           }
 
+          /**
+           * Styling with pseudo ID's
+           */
           #switchesComponentsStyled sj-checkbox::x-sj-circle:after,
           #switchesComponentsStyled sj-checkbox [pseudo=x-sj-circle]:after {
             -webkit-box-shadow: none;
@@ -62,8 +68,18 @@
             box-shadow: none;
           }
 
-          sj-checkbox-input {
-            margin: 0 auto 5em auto;
+          /**
+           * Styling with part pseudo elements
+           */
+          #switchesComponentsStyledPart sj-checkbox-part::part(shadow),
+          #switchesComponentsStyledPart sj-checkbox-part [part=shadow],
+          #switchesComponentsStyledPart sj-checkbox-part::part(shadow):before,
+          #switchesComponentsStyledPart sj-checkbox-part [part=shadow]:before,
+          #switchesComponentsStyledPart sj-checkbox-part::part(shadow):after,
+          #switchesComponentsStyledPart sj-checkbox-part [part=shadow]:after {
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
           }
         </style>
     </head>
@@ -74,6 +90,9 @@
 
         <h1>Checkbox Power<br>With Web Components</h1>
         <p>Go back to article<br><a href="http://4waisenkinder.de/blog/2013/09/21/getting-started-with-web-components-and-polymer-dot-js/">"Getting started with web components using polymer.js - II"</a></p>
+
+
+
         <h2>Check the "web components" checkboxes</h2>
         <ul id="switchesComponents">
             <li><sj-checkbox class="small" fallbackId="checkboxBigComponent">jojojo</sj-checkbox>
@@ -94,9 +113,12 @@
             }
           } )( document );
         </script>
-        <h2>Customized Web components</h2>
+
+
+
+        <h2>Customized Web components using pseudo ID's</h2>
         <ul id="switchesComponentsStyled">
-            <li><sj-checkbox class="big" fallbackId="checkboxBigStyled" style="color:red;"></sj-checkbox>
+            <li><sj-checkbox class="big" fallbackId="checkboxBigStyled"></sj-checkbox>
             <li><sj-checkbox class="medium" fallbackId="checkboxMediumStyled"></sj-checkbox>
             <li><sj-checkbox class="small" fallbackId="checkboxSmallStyled"></sj-checkbox>
             <li><sj-checkbox class="customWidth" fallbackId="checkboxCustomStyled"></sj-checkbox>
@@ -117,9 +139,39 @@
             }
           } )( document );
         </script>
-        <h2>Web component with behaviour</h2>
+
+
+
+        <h2>Customized Web components using part pseudo elements</h2>
+        <ul id="switchesComponentsStyledPart">
+            <li><sj-checkbox-part class="big" fallbackId="checkboxBigStyledPart"></sj-checkbox-part>
+            <li><sj-checkbox-part class="medium" fallbackId="checkboxMediumStyledPart"></sj-checkbox-part>
+            <li><sj-checkbox-part class="small" fallbackId="checkboxSmallStyledPart"></sj-checkbox-part>
+            <li><sj-checkbox-part class="customWidth" fallbackId="checkboxCustomStyledPart"></sj-checkbox-part>
+        </ul>
+        <div id="switchesComponentsStyledPartNotifications" class="notification"></div>
+        <script>
+          ( function( document ) {
+            var switchList    = document.getElementById( 'switchesComponentsStyledPart' );
+
+            switchList.addEventListener( 'componentChange', changeHandler, false );
+
+            function changeHandler( event ) {
+              var notification = document.getElementById(
+                                    'switchesComponentsStyledPartNotifications'
+                                  );
+
+              notification.innerHTML = '!!! ' + event.detail.id +' switched !!!';
+            }
+          } )( document );
+        </script>
+
+
+
+        <!-- Next article but want to keep it ;) ->
+        <!--h2>Web component with behaviour</h2>
         <div class="switchesComponentsWithBehaviour">
             <sj-checkbox-input class="small" fallbackId="checkboxBehaviour">Something wrong?</sj-checkbox-input>
-        </div>
+        </div-->
     </body>
 </html>
